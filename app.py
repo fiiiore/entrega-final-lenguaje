@@ -137,8 +137,35 @@ def home():
             </div>
 
         </div>
+
+        <div class="card" style="max-width: 900px; margin: 30px auto 40px auto;">
+            <h2> Endpoints JSON del análisis</h2>
+
+            <p>Estos endpoints devuelven los resultados en formato JSON.</p>
+
+            <ul style="line-height: 1.8;">
+                <li>
+                    <a href="/api/presupuesto_rating" style="color: #2563eb; font-weight: bold;">
+                        /api/presupuesto_rating
+                    </a>
+                     Rating promedio por rango de presupuesto
+                </li>
+
+                <li>
+                    <a href="/api/duracion_decadas" style="color: #2563eb; font-weight: bold;">
+                        /api/duracion_decadas
+                    </a>
+                     Duración mediana por década
+                </li>
+            </ul>
+
+            <p style="font-size: 13px; color: #555;">
+            </p>
+        </div>
+
     </body>
-    </html>
+</html>
+
     """
 
     return HTMLResponse(html)
@@ -155,6 +182,18 @@ def descargar_presupuesto_rating():
 def descargar_duracion_decadas():
     return FileResponse("result_duracion_por_decada.csv")
 
+# ================================================
+# ENDPOINTS JSON
+# ================================================
+@app.get("/api/presupuesto_rating")
+def api_presupuesto_rating():
+    df = cargar_csv("result_presupuesto_vs_rating.csv")
+    return df.to_dict(orient="records")
+
+@app.get("/api/duracion_decadas")
+def api_duracion_decadas():
+    df = cargar_csv("result_duracion_por_decada.csv")
+    return df.to_dict(orient="records")
 
 # ================================================
 # Abrir navegador automáticamente
