@@ -6,7 +6,7 @@ import webbrowser
 import threading
 import time
 import base64
-
+#camboio prueba 
 app = FastAPI(
     title="Dashboard - Proyecto Lenguajes 2025",
     description="Panel visual de resultados del análisis TMDB 5000",
