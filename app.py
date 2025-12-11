@@ -38,14 +38,21 @@ def home():
     # Cargar datasets generados por el análisis
     df_pres = cargar_csv("result_presupuesto_vs_rating.csv")
     df_dura = cargar_csv("result_duracion_por_decada.csv")
+    df_roi = cargar_csv("result_roi_por_genero.csv")
+    df_dir = cargar_csv("result_directores_rating.csv")
 
     # Tomar las primeras 8 filas como vista previa
     preview_pres = df_pres.head(8).to_html(index=False)
     preview_dura = df_dura.head(8).to_html(index=False)
+    preview_roi = df_roi.head(8).to_html(index=False)
+    preview_dir = df_dir.head(8).to_html(index=False)
 
     # Cargar gráficos
     img1 = cargar_imagen_base64("grafico_presupuesto_vs_rating.png")
     img2 = cargar_imagen_base64("grafico_duracion_por_decada.png")
+    img3 = cargar_imagen_base64("grafico_roi_por_genero.png")
+    img4 = cargar_imagen_base64("grafico_directores_rating.png")
+
 
     html = f"""
     <html>
@@ -136,12 +143,30 @@ def home():
                 <a class="btn" href="/descargar/duracion_decadas">⬇️ Descargar CSV</a>
             </div>
 
+            <!-- CARD 3 -->
+            <div class="card">
+                <h2>💸 ROI Promedio por Género</h2>
+                <img src="data:image/png;base64,{img3}">
+                <h3>Vista previa de los datos</h3>
+                {preview_roi}
+                <a class="btn" href="/descargar/roi_genero">⬇️ Descargar CSV</a>
+            </div>
+
+            <!-- CARD 4 -->
+             <div class="card">
+                <h2>🎥 Directores con Mejor Rating Promedio</h2>
+                <img src="data:image/png;base64,{img4}">
+                <h3>Vista previa de los datos</h3>
+                {preview_dir}
+                <a class="btn" href="/descargar/directores_rating">⬇️ Descargar CSV</a>
+            </div>
+
         </div>
 
         <div class="card" style="max-width: 900px; margin: 30px auto 40px auto;">
             <h2> Endpoints JSON del análisis</h2>
 
-            <p>Estos endpoints devuelven los resultados en formato JSON.</p>
+            <p>Resultados en formato JSON.</p>
 
             <ul style="line-height: 1.8;">
                 <li>
@@ -157,7 +182,22 @@ def home():
                     </a>
                      Duración mediana por década
                 </li>
-            </ul>
+                
+                <li>
+                    <a href="/api/roi_genero" style="color: #2563eb; font-weight: bold;">
+                        /api/roi_genero
+                    </a>
+                     ROI promedio por género
+                </li>
+
+                <li>
+                    <a href="/api/directores_rating" style="color: #2563eb; font-weight: bold;">
+                        /api/directores_rating
+                    </a>
+                     Directores con mejor rating promedio
+                </li>
+             </ul>
+
 
             <p style="font-size: 13px; color: #555;">
             </p>
@@ -182,6 +222,14 @@ def descargar_presupuesto_rating():
 def descargar_duracion_decadas():
     return FileResponse("result_duracion_por_decada.csv")
 
+@app.get("/descargar/roi_genero")
+def descargar_roi_genero():
+    return FileResponse("result_roi_por_genero.csv")
+
+@app.get("/descargar/directores_rating")
+def descargar_directores_rating():
+    return FileResponse("result_directores_rating.csv")
+
 # ================================================
 # ENDPOINTS JSON
 # ================================================
@@ -193,6 +241,16 @@ def api_presupuesto_rating():
 @app.get("/api/duracion_decadas")
 def api_duracion_decadas():
     df = cargar_csv("result_duracion_por_decada.csv")
+    return df.to_dict(orient="records")
+
+@app.get("/api/roi_genero")
+def api_roi_genero():
+    df = cargar_csv("result_roi_por_genero.csv")
+    return df.to_dict(orient="records")
+
+@app.get("/api/directores_rating")
+def api_directores_rating():
+    df = cargar_csv("result_directores_rating.csv")
     return df.to_dict(orient="records")
 
 # ================================================

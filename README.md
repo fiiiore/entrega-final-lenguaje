@@ -9,6 +9,16 @@ El proceso incluye: lectura e inspección del dataset, limpieza y preparación d
 
 La API y el análisis se encuentran conectados: el notebook genera los CSV y la API los expone mediante endpoints y un dashboard visual.
 
+## Librerías utilizadas
+El proyecto utiliza las siguientes librerias de Python:
+pandas
+numpy
+matplotlib
+seaborn
+fastapi
+uvicorn
+
+
 ## Cómo ejecutar el notebook
 1. Abrir VS Code o Jupyter. (O cualquier entorno compatible con Jupyter Notebook)
 2. Abrir `analisis.ipynb`.
@@ -21,9 +31,6 @@ Los gráficos y CSV se generan automáticamente en la carpeta del proyecto.
 ## Cómo ejecutar la API  
 El archivo `app.py` levanta una API local con FastAPI.
 
-Instalar dependencias
-pip install -r requirements.txt
-
 Ejecutar la API
 Desde la terminal ubicada en la carpeta del proyecto:
 python app.py
@@ -34,8 +41,8 @@ http://127.0.0.1:8000
 En esa dirección se muestra el dashboard con:
 * vista previa de datos,
 * gráficos en base64,
-* enlaces de descarga de los CSV generados.
-* accesos directos a los endpoints JSON del análisis.
+* enlaces de descarga de los CSV.
+* endpoints JSON para consultar los resultados.
 
 ---
 
@@ -47,10 +54,14 @@ GET /
 Descarga de CSV:
 GET /descargar/presupuesto_rating
 GET /descargar/duracion_decadas
+GET /descargar/roi_genero
+GET /descargar/directores_rating
 
 Endpoints JSON del análisis:
 GET /api/presupuesto_rating
 GET /api/duracion_decadas
+GET /api/roi_genero
+GET /api/directores_rating
 
 ## Notas 
 
