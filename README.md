@@ -7,7 +7,7 @@ Este proyecto trabaja con el dataset TMDB 5000 Movies, realizando un análisis p
 
 El proceso incluye: lectura e inspección del dataset, limpieza y preparación de datos, desarrollo de cuatro ejes de análisis, generación de gráficos y archivos CSV, y la construcción de una mini-API que permite consultar los resultados.
 
-La API y el análisis se encuentran conectados: el notebook genera los CSV y la API los expone mediante endpoints y un dashboard visual.
+La API y el análisis se encuentran conectados: el notebook genera los CSV y la API los expone mediante endpoints y un dashboard.
 
 
 ## Cómo ejecutar el notebook
