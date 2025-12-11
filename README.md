@@ -9,15 +9,6 @@ El proceso incluye: lectura e inspección del dataset, limpieza y preparación d
 
 La API y el análisis se encuentran conectados: el notebook genera los CSV y la API los expone mediante endpoints y un dashboard visual.
 
-## Librerías utilizadas
-El proyecto utiliza las siguientes librerias de Python:
-pandas
-numpy
-matplotlib
-seaborn
-fastapi
-uvicorn
-
 
 ## Cómo ejecutar el notebook
 1. Abrir VS Code o Jupyter. (O cualquier entorno compatible con Jupyter Notebook)
@@ -30,6 +21,9 @@ Los gráficos y CSV se generan automáticamente en la carpeta del proyecto.
 
 ## Cómo ejecutar la API  
 El archivo `app.py` levanta una API local con FastAPI.
+
+Instalar dependencias (en caso de ser necesario):
+pip install -r requirements.txt
 
 Ejecutar la API
 Desde la terminal ubicada en la carpeta del proyecto:
