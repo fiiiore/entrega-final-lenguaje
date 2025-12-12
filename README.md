@@ -9,6 +9,8 @@ El proceso incluye: lectura e inspección del dataset, limpieza y preparación d
 
 La API y el análisis se encuentran conectados: el notebook genera los CSV y la API los expone mediante endpoints y un dashboard.
 
+Requisitos
+- Python 3.10+ 
 
 ## Cómo ejecutar el notebook
 1. Abrir VS Code o Jupyter. (O cualquier entorno compatible con Jupyter Notebook)
@@ -17,12 +19,13 @@ La API y el análisis se encuentran conectados: el notebook genera los CSV y la 
 
 Los gráficos y CSV se generan automáticamente en la carpeta del proyecto.
 
+Ejecutar el notebook antes de levantar la API, ya que la API utiliza esos CSV/PNG.
 ---
 
 ## Cómo ejecutar la API  
 El archivo `app.py` levanta una API local con FastAPI.
 
-Instalar dependencias (en caso de ser necesario):
+Instalar dependencias:
 pip install -r requirements.txt
 
 Ejecutar la API

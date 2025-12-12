@@ -153,7 +153,7 @@ plt.show()
 roi_por_genero.to_csv("result_roi_por_genero.csv", index=False)
 
 # ======================================================
-# EJE 4 — Directores con mejor rating promedio (mínimo 3 películas)
+# EJE 4 — Directores con mejor rating promedio 
 # ======================================================
 
 df_eje4_creditos = creditos[["movie_id", "crew"]].copy()
